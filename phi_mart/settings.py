@@ -16,7 +16,8 @@ SECRET_KEY = 'django-insecure-u#ftob%!0^7#@la!jgyfrp2e6&80z5a21l!dfvghl8bh1m2&9^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = ['https://*.onrender.com', 'http://127.0.0.1:8000/']
 
 AUTH_USER_MODEL = 'users.User'
 
@@ -92,31 +93,41 @@ INTERNAL_IPS = [
 # }
 
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'Phi_Mart',
+        'USER': 'postgres',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'Phi_Mart',
-#         'USER': 'postgres',
-#         'PASSWORD': 'password',
-#         'HOST': 'localhost',
+#         'NAME': 'postgres',
+#         'USER': 'postgres.nmzufcfiixcrsbqgehiw',
+#         'PASSWORD': 'Y6wVkPmQqSeKwZ0F',
+#         'HOST': 'aws-1-ap-southeast-1.pooler.supabase.com',
 #         'PORT': '5432',
 #     }
 # }
 
 
 
-
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('dbname'),
-        'USER': config('user'),
-        'PASSWORD': config('password'),
-        'HOST': config('host'),
-        'PORT': config('port'),
-    }
-} 
+# For Postgres
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': config('DB_NAME', default=''),
+#         'USER': config('DB_USER', default=''),
+#         'PASSWORD': config('DB_PASSWORD', default=''),
+#         'HOST': config('DB_HOST', default='localhost'),
+#         'PORT': config('DB_PORT', cast=int)
+#     }
+# }
 
 
 # Password validation
